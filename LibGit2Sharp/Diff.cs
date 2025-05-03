@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using LibGit2Sharp.Bytes;
 using LibGit2Sharp.Core;
 using LibGit2Sharp.Core.Handles;
 
@@ -105,6 +106,7 @@ namespace LibGit2Sharp
 
         private static readonly IDictionary<Type, Func<DiffHandle, object>> ChangesBuilders = new Dictionary<Type, Func<DiffHandle, object>>
         {
+            { typeof(ByteArrayPatch), diff => new ByteArrayPatch(diff) },
             { typeof(Patch), diff => new Patch(diff) },
             { typeof(TreeChanges), diff => new TreeChanges(diff) },
             { typeof(PatchStats), diff => new PatchStats(diff) },

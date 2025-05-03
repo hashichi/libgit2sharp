@@ -18,11 +18,11 @@ namespace LibGit2Sharp
     [DebuggerDisplay("{DebuggerDisplay,nq}")]
     public class Patch : IEnumerable<PatchEntryChanges>, IDiffResult
     {
-        private readonly StringBuilder fullPatchBuilder = new StringBuilder();
+        protected readonly StringBuilder fullPatchBuilder = new StringBuilder();
 
-        private readonly IDictionary<FilePath, PatchEntryChanges> changes = new Dictionary<FilePath, PatchEntryChanges>();
-        private int linesAdded;
-        private int linesDeleted;
+        internal readonly IDictionary<FilePath, PatchEntryChanges> changes = new Dictionary<FilePath, PatchEntryChanges>();
+        protected int linesAdded;
+        protected int linesDeleted;
 
         /// <summary>
         /// Needed for mocking purposes.
